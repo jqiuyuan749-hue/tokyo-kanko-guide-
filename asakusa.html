@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浅草エリアガイド｜東京さんぽ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#101e36;
+    --bg-deep:#0a1526;
+    --panel:#1b3157;
+    --panel-2:#21385f;
+    --cream:#f4eedd;
+    --cream-soft:#cfd6e4;
+    --vermillion:#d9552e;
+    --gold:#c9a227;
+    --line:rgba(244,238,221,0.16);
+    --shadow: 0 20px 40px -20px rgba(0,0,0,0.55);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream-soft);
+    font-family:'Noto Sans JP', sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Shippori Mincho B1', serif;
+    color:var(--cream);
+    font-weight:700;
+  }
+  .eyebrow{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-size:12px;
+    letter-spacing:0.35em;
+    color:var(--gold);
+    font-weight:700;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,21,38,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand{font-family:'Shippori Mincho B1',serif; font-size:18px; color:var(--cream); letter-spacing:0.05em; text-decoration:none;}
+  .brand span{color:var(--vermillion);}
+  .back-link{
+    font-size:13px; font-family:'Zen Kaku Gothic New',sans-serif; letter-spacing:0.06em;
+    color:var(--cream-soft); text-decoration:none; transition:color .25s;
+  }
+  .back-link:hover{color:var(--gold);}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:80px 0 50px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(217,85,46,0.18), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 10% 0%, rgba(201,162,39,0.12), transparent 60%),
+      var(--bg);
+    text-align:center;
+  }
+  .hero h1{
+    font-size:clamp(40px, 7vw, 70px);
+    line-height:1.3;
+    margin:18px 0 14px;
+  }
+  .hero h1 small{
+    display:block;
+    font-size:0.32em;
+    color:var(--gold);
+    letter-spacing:0.35em;
+    margin-top:14px;
+  }
+  .hero p.lead{
+    max-width:560px; margin:0 auto;
+    color:var(--cream-soft);
+    font-size:15.5px;
+  }
+  .gate{ width:100%; max-width:340px; margin:40px auto 0; display:block; }
+  .gate path, .gate line{ fill:none; stroke:var(--cream); stroke-width:1.6; stroke-linecap:round; }
+  .gate .accent{ stroke:var(--gold); }
+  .lantern{ fill:var(--vermillion); stroke:none; opacity:0.9; }
+
+  .wave{display:block; width:100%; height:46px;}
+  .wave path{fill:var(--panel);}
+
+  /* ---------- INTRO ---------- */
+  .intro{padding:54px 0 10px; text-align:center;}
+  .intro p{max-width:620px; margin:0 auto; font-size:14.5px; color:var(--cream-soft);}
+
+  /* ---------- SIGHTS ---------- */
+  section#sights{padding:54px 0 80px;}
+  .section-head{text-align:center; margin-bottom:44px;}
+  .section-head h2{font-size:28px; margin-top:10px;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:22px;
+  }
+  .card{
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:30px 26px;
+    box-shadow:var(--shadow);
+  }
+  .card .icon{ width:40px; height:40px; color:var(--gold); margin-bottom:16px; }
+  .card .icon svg{width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;}
+  .card h3{font-size:18px; margin-bottom:10px; letter-spacing:0.02em;}
+  .card p.desc{font-size:13.5px; color:var(--cream-soft);}
+
+  /* ---------- ROUTE ---------- */
+  section#route{
+    padding:64px 0 90px;
+    background:linear-gradient(180deg, var(--bg-deep), var(--bg));
+  }
+  .timeline{position:relative; max-width:640px; margin:0 auto; padding-left:8px;}
+  .timeline::before{
+    content:""; position:absolute; left:25px; top:6px; bottom:6px; width:1px;
+    background:linear-gradient(var(--gold), transparent 95%);
+    opacity:0.45;
+  }
+  .stop{position:relative; display:flex; gap:22px; padding:0 0 36px 0;}
+  .stop:last-child{padding-bottom:0;}
+  .stop .num{
+    flex:0 0 50px; height:50px; border-radius:50%;
+    border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Shippori Mincho B1', serif; font-size:15px; color:var(--gold);
+    background:var(--bg-deep); z-index:1;
+  }
+  .stop h4{font-size:16.5px; font-family:'Shippori Mincho B1', serif; color:var(--cream); font-weight:700; margin-bottom:4px;}
+  .stop p{font-size:13.5px; color:var(--cream-soft);}
+
+  /* ---------- ACCESS ---------- */
+  .access{
+    max-width:680px; margin:0 auto; padding:30px 0 0;
+    text-align:center;
+  }
+  .access-box{
+    display:inline-block; text-align:left;
+    border-left:2px solid var(--vermillion);
+    padding:18px 24px;
+    background:rgba(217,85,46,0.07);
+    font-size:13.5px; color:var(--cream-soft);
+  }
+  .access-box b{color:var(--gold); font-family:'Zen Kaku Gothic New',sans-serif; letter-spacing:0.06em; font-size:11.5px; display:block; margin-bottom:8px;}
+
+  footer{
+    padding:46px 0 40px; text-align:center;
+    border-top:1px solid var(--line); background:var(--bg-deep);
+  }
+  footer p{font-size:12px; color:rgba(207,214,228,0.55); letter-spacing:0.03em;}
+  footer a.top-link{
+    display:inline-block; margin-bottom:14px;
+    font-family:'Zen Kaku Gothic New', sans-serif; font-size:12.5px; letter-spacing:0.06em;
+    color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">東京<span>さんぽ</span></a>
+    <a class="back-link" href="index.html">← トップページに戻る</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">AREA GUIDE 01</span>
+    <h1>浅草<small>江戸の下町情緒が、今も息づく街</small></h1>
+    <p class="lead">大きな赤提灯の雷門から、仲見世通りの食べ歩き、浅草寺の参拝まで。東京観光の定番、浅草の歩き方を紹介します。</p>
+
+    <svg class="gate" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="170" x2="60" y2="60"/>
+      <line x1="240" y1="170" x2="240" y2="60"/>
+      <line x1="40" y1="60" x2="260" y2="60" class="accent"/>
+      <line x1="50" y1="46" x2="250" y2="46" class="accent"/>
+      <ellipse class="lantern" cx="150" cy="100" rx="26" ry="34"/>
+      <line x1="150" y1="66" x2="150" y2="76"/>
+      <line x1="150" y1="124" x2="150" y2="134"/>
+    </svg>
+  </div>
+</header>
+
+<svg class="wave" viewBox="0 0 1200 46" preserveAspectRatio="none"><path d="M0,20 C150,45 300,0 450,20 C600,40 750,0 900,20 C1000,33 1100,8 1200,20 L1200,46 L0,46 Z"/></svg>
+
+<section class="intro">
+  <div class="wrap">
+    <span class="eyebrow">ABOUT ASAKUSA</span>
+    <p style="margin-top:14px;">浅草は、江戸時代から続く東京最古の寺・浅草寺を中心に発展した下町エリアです。昔ながらの商店と、世界中からの観光客でにぎわう活気が同居しているのが魅力です。</p>
+  </div>
+</section>
+
+<section id="sights">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">MUST-SEE</span>
+      <h2>浅草の見どころ</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><line x1="5" y1="20" x2="5" y2="8"/><line x1="19" y1="20" x2="19" y2="8"/><line x1="3" y1="8" x2="21" y2="8"/><line x1="4" y1="5" x2="20" y2="5"/><ellipse cx="12" cy="13" rx="3.4" ry="4.4"/></svg></div>
+        <h3>雷門</h3>
+        <p class="desc">浅草のシンボルである大提灯の門。「風雷神門」が正式名称で、左右に風神・雷神が祀られている。記念写真の定番スポット。</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><line x1="3" y1="9" x2="21" y2="9"/><path d="M3 9 L5 5 L19 5 L21 9"/><line x1="6" y1="9" x2="6" y2="19"/><line x1="12" y1="9" x2="12" y2="19"/><line x1="18" y1="9" x2="18" y2="19"/></svg></div>
+        <h3>仲見世通り</h3>
+        <p class="desc">雷門から浅草寺まで続く約250mの商店街。人形焼やせんべいなど、食べ歩きグルメと土産物店が並ぶ。</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 19 L12 5 L20 19 Z"/><line x1="7.5" y1="13" x2="16.5" y2="13"/><line x1="4" y1="19" x2="20" y2="19"/></svg></div>
+        <h3>浅草寺 本堂</h3>
+        <p class="desc">628年創建と伝わる、東京最古の寺。大きな赤い本堂は迫力があり、お線香の煙で身を清めてから参拝するのが習わし。</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="5" y1="6" x2="19" y2="6"/><line x1="6" y1="11" x2="18" y2="11"/><line x1="7" y1="16" x2="17" y2="16"/></svg></div>
+        <h3>五重塔</h3>
+        <p class="desc">浅草寺の本堂の向かいに建つ五重塔。夜にはライトアップもされ、昼とは違った表情を見せる。</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M2 16 C5 12 7 12 10 16 C13 12 15 12 18 16 C20 14 21 14 22 16"/><line x1="6" y1="20" x2="6" y2="9"/><circle cx="6" cy="6" r="2.6"/></svg></div>
+        <h3>隅田公園・隅田川</h3>
+        <p class="desc">浅草寺のすぐ東側を流れる隅田川沿いの公園。春は桜の名所として知られ、水上バスの乗り場もある。</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><line x1="8" y1="12" x2="8" y2="19"/><line x1="16" y1="12" x2="16" y2="19"/><line x1="8" y1="19" x2="16" y2="19"/></svg></div>
+        <h3>花やしき</h3>
+        <p class="desc">1853年開園、日本最古の遊園地。昔ながらのジェットコースターなど、レトロな雰囲気が楽しめる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="route">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">HALF-DAY ROUTE</span>
+      <h2>浅草 半日モデルコース</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="stop"><div class="num">01</div><div><h4>雷門で記念撮影</h4><p>大提灯を背景に、浅草さんぽのスタート地点。</p></div></div>
+      <div class="stop"><div class="num">02</div><div><h4>仲見世通りで食べ歩き</h4><p>人形焼やめんちかつなど、好きなものをつまみながら進む。</p></div></div>
+      <div class="stop"><div class="num">03</div><div><h4>浅草寺で参拝</h4><p>本堂と五重塔をゆっくり見学。おみくじも楽しい。</p></div></div>
+      <div class="stop"><div class="num">04</div><div><h4>隅田公園でひと休み</h4><p>川沿いのベンチで一息。天気が良ければ水上バスも。</p></div></div>
+    </div>
+
+    <div class="access">
+      <div class="access-box">
+        <b>ACCESS</b>
+        浅草駅（東京メトロ銀座線・都営浅草線・東武スカイツリーライン・つくばエクスプレス）から徒歩すぐ。雷門は駅を出て北へ約3分。
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="top-link" href="index.html">← 東京さんぽ トップページへ戻る</a>
+    <p>このページは授業課題の練習用に作成した見本です。</p>
+  </div>
+</footer>
+
+</body>
+</html>
